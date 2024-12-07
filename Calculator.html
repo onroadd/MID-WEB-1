@@ -35,7 +35,7 @@
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('9')">9</button>
                 <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
-                    onclick="appendToDisplay(':')">:</button>
+                    onclick="appendToDisplay('/')">/</button>
 
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('4')">4</button>
@@ -44,7 +44,7 @@
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('6')">6</button>
                 <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
-                    onclick="appendToDisplay('X')">x</button>
+                    onclick="appendToDisplay('*')">*</button>
 
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('1')">1</button>
@@ -100,7 +100,7 @@
         document.addEventListener('keydown', function (event) {
             const key = event.key;
 
-            if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === 'x' || key === ':' || key === '.') {
+            if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === '*' || key === '/' || key === '.') {
                 appendToDisplay(key);
             } else if (key === 'Enter' || key === '=') {
                 calculate();
