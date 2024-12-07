@@ -44,7 +44,7 @@
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('6')">6</button>
                 <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
-                    onclick="appendToDisplay('x')">x</button>
+                    onclick="appendToDisplay('X')">x</button>
 
                 <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
                     onclick="appendToDisplay('1')">1</button>
@@ -89,7 +89,7 @@
 
         function calculate() {
             try {
-                currentInput = eval(currentInput).toString();
+                currentInput = (new Function('return ' + currentInput))().toString();
                 document.getElementById('display').innerText = currentInput;
             } catch (error) {
                 document.getElementById('display').innerText = 'Error';
@@ -100,13 +100,15 @@
         document.addEventListener('keydown', function (event) {
             const key = event.key;
 
-            if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === '*' || key === '/' || key === '.') {
+            if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === 'x' || key === ':' || key === '.') {
                 appendToDisplay(key);
             } else if (key === 'Enter' || key === '=') {
                 calculate();
             } else if (key === 'Backspace') {
                 currentInput = currentInput.slice(0, -1);
                 document.getElementById('display').innerText = currentInput || '0';
+            } else if (key === 'Escape') {
+                clearDisplay();
             }
         });
     </script>
