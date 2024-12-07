@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 font-sans m-0 p-0">
+
+    <header class="bg-gray-800 text-white py-4 text-center">
+        <h1 class="text-2xl font-bold">Simple Kalkulator</h1>
+    </header>
+
+    <nav>
+        <ul class="flex justify-center space-x-6 bg-gray-700 py-3 m-0">
+            <li><a href="index.html" class="text-white hover:text-yellow-400">Home</a></li>
+            <li><a href="about.html" class="text-white hover:text-yellow-400">About</a></li>
+            <li><a href="Gallery.html" class="text-white hover:text-yellow-400">My Gallery</a></li>
+            <li><a href="Contact.html" class="text-white hover:text-yellow-400">Contact</a></li>
+            <li><a href="Registration.html" class="text-white hover:text-yellow-400">Registration</a></li>
+        </ul>
+    </nav>
+
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white p-4 rounded-xl shadow-lg max-w-xs w-full">
+            <div id="display" class="bg-gray-800 text-white text-xl text-right p-3 rounded-lg mb-3">0</div>
+            <div class="grid grid-cols-4 gap-2">
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('7')">7</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('8')">8</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('9')">9</button>
+                <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
+                    onclick="appendToDisplay(':')">:</button>
+
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('4')">4</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('5')">5</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('6')">6</button>
+                <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
+                    onclick="appendToDisplay('x')">x</button>
+
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('1')">1</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('2')">2</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('3')">3</button>
+                <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
+                    onclick="appendToDisplay('-')">-</button>
+
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('0')">0</button>
+                <button class="bg-gray-300 p-3 rounded-lg hover:bg-gray-400 text-sm transition-colors"
+                    onclick="appendToDisplay('.')">.</button>
+                <button class="bg-red-400 p-3 rounded-lg hover:bg-red-700 text-sm transition-colors"
+                    onclick="clearDisplay()">C</button>
+                <button class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 text-sm transition-colors"
+                    onclick="appendToDisplay('+')">+</button>
+            </div>
+            <button
+                class="bg-green-500 text-white w-full p-3 rounded-lg mt-4 hover:bg-green-600 text-sm transition-colors"
+                onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
+        <p>&copy; 2024 Rico's Kalkulator</p>
+    </footer>
+
+    <script>
+        let currentInput = '';
+
+        function appendToDisplay(value) {
+            currentInput += value;
+            document.getElementById('display').innerText = currentInput;
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            document.getElementById('display').innerText = '0';
+        }
+
+        function calculate() {
+            try {
+                currentInput = eval(currentInput).toString();
+                document.getElementById('display').innerText = currentInput;
+            } catch (error) {
+                document.getElementById('display').innerText = 'Error';
+                currentInput = '';
+            }
+        }
+
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+
+            if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === '*' || key === '/' || key === '.') {
+                appendToDisplay(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Backspace') {
+                currentInput = currentInput.slice(0, -1);
+                document.getElementById('display').innerText = currentInput || '0';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

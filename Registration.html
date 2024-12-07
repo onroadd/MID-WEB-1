@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-gray-800 text-white text-center py-4">
+        <h1 class="text-3xl font-bold">Contact Rico</h1>
+    </header>
+    <nav class="bg-gray-700">
+        <ul class="flex justify-center space-x-6 py-3 m-0">
+            <li><a href="index.html" class="text-white hover:text-yellow-400">Home</a></li>
+            <li><a href="Gallery.html" class="text-white hover:text-yellow-400">My Gallery</a></li>
+            <li><a href="Contact.html" class="text-white hover:text-yellow-400">Contact</a></li>
+            <li><a href="Calculator.html" class="text-white hover:text-yellow-400">Calculator</a></li>
+            <li><a href="Registration.html" class="text-white hover:text-yellow-400">Registration</a></li>
+        </ul>
+    </nav>
+    <main class="container mx-auto grid grid-cols-4 gap-6 p-8">
+        <aside class="bg-gray-200 p-3 rounded-md shadow-md col-span-1">
+            <h2 class="text-xl font-semibold">Quick Links</h2>
+            <ul class="space-y-2">
+                <li><a href="about.html" class="text-blue-500">About Rico</a></li>
+                <li><a href="gallery.html" class="text-blue-500">My Gallery</a></li>
+            </ul>
+        </aside>
+
+        <section class="bg-white p-8 rounded shadow-md col-span-2">
+            <h1 class="text-2xl font-bold mb-4">Registration Form</h1>
+            <form id="registrationForm" class="space-y-4">
+                <div>
+                    <label for="name" class="block font-medium">Name</label>
+                    <input type="text" id="name" name="name" maxlength="40"
+                        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        placeholder="Enter your name">
+                    <p id="nameError" class="text-red-500 text-sm hidden">Name is required and must be less than 40
+                        characters.</p>
+                </div>
+
+                <div>
+                    <label for="phone" class="block font-medium">Phone Number</label>
+                    <input type="text" id="phone" name="phone" maxlength="15"
+                        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        placeholder="Enter your phone number">
+                    <p id="phoneError" class="text-red-500 text-sm hidden">Phone number must be numeric and up to 15
+                        digits.</p>
+                </div>
+
+                <div>
+                    <label for="email" class="block font-medium">Email</label>
+                    <input type="email" id="email" name="email"
+                        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        placeholder="Enter your email">
+                    <p id="emailError" class="text-red-500 text-sm hidden">Please enter a valid email address.</p>
+                </div>
+
+                <div>
+                    <label for="password" class="block font-medium">Password</label>
+                    <input type="password" id="password" name="password"
+                        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-200"
+                        placeholder="Enter your password">
+                    <p id="passwordError" class="text-red-500 text-sm hidden">Password must be 8-16 characters, include
+                        uppercase and lowercase letters, and contain at least one number. No symbols allowed.</p>
+                </div>
+
+                <button type="button" id="submitBtn"
+                    class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none">
+                    Submit
+                </button>
+            </form>
+        </section>
+
+        <aside class="bg-gray-200 p-3 rounded-md shadow-md col-span-1">
+            <h2 class="text-xl font-semibold">Feel free to interact</h2>
+            <ul class="space-y-2">
+                <li><a href="Contact.html" class="text-blue-500">Contact</a></li>
+            </ul>
+        </aside>
+    </main>
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; 2024 Contact Rico</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        const nameError = document.getElementById("nameError");
+        const phoneError = document.getElementById("phoneError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            let isValid = true;
+
+            if (!nameInput.value || nameInput.value.length > 40) {
+                nameError.classList.remove("hidden");
+                isValid = false;
+            } else {
+                nameError.classList.add("hidden");
+            }
+
+            const phoneRegex = /^[0-9]{1,15}$/;
+            if (!phoneRegex.test(phoneInput.value)) {
+                phoneError.classList.remove("hidden");
+                isValid = false;
+            } else {
+                phoneError.classList.add("hidden");
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.classList.remove("hidden");
+                isValid = false;
+            } else {
+                emailError.classList.add("hidden");
+            }
+
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/;
+            if (!passwordRegex.test(passwordInput.value)) {
+                passwordError.classList.remove("hidden");
+                isValid = false;
+            } else {
+                passwordError.classList.add("hidden");
+            }
+
+            if (isValid) {
+                alert("Registration Successful");
+            }
+        });
+    </script>
+</body>
+
+</html>

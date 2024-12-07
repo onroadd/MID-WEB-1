@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>My Gallery</title>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-gray-800 text-white p-6 text-center">
+        <h1 class="text-3xl">Rico's Portfolio - Galeri Data Analyst dan Programmer</h1>
+    </header>
+
+    <nav class="bg-gray-700 text-white">
+        <ul class="flex justify-center space-x-8 py-4">
+            <li><a href="index.html" class="hover:text-gray-300">Home</a></li>
+            <li><a href="about.html" class="hover:text-gray-300">About</a></li>
+            <li><a href="registration.html" class="hover:text-gray-300">Contact</a></li>
+            <li><a href="Calculator.html" class="text-white hover:text-yellow-400">Calculator</a></li>
+        </ul>
+    </nav>
+
+    <div class="grid grid-cols-4 gap-6 p-8">
+        <aside class="bg-gray-200 p-4 rounded-md shadow-md">
+            <h2 class="text-xl font-semibold">Quick Links</h2>
+            <ul class="space-y-2">
+                <li><a href="about.html" class="text-blue-500">About Rico</a></li>
+            </ul>
+        </aside>
+
+        <div class="col-span-2 bg-white p-6 rounded-md shadow-md">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="gallery-item group">
+                    <img src="data-analyst1.jpg" alt="Data Analyst Work"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Data Analysis Process - Visualizing data insights
+                        through charts.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="programmer1.jpg" alt="Programmer Coding"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Software Development - Writing clean, efficient
+                        code for apps.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="data-analyst2.jpg" alt="Data Analysis Dashboard"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Data Visualizations - Insights displayed through
+                        graphs and dashboards.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="programmer2.jpg" alt="Programmer Coding on Laptop"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Coding - Working on a software project in an
+                        office environment.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="data-analyst3.jpg" alt="Data Cleaning"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Data Cleaning - Organizing and preparing data for
+                        analysis.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="programmer3.jpg" alt="Backend Developer Work"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Backend Development - Designing and maintaining
+                        server-side logic.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="data-analyst4.jpg" alt="Analyzing Data Trends"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Trend Analysis - Identifying patterns and trends
+                        in large datasets.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="programmer4.jpg" alt="Programmer Collaborating"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">Collaboration - Teamwork in programming for
+                        effective problem solving.</p>
+                </div>
+                <div class="gallery-item group">
+                    <img src="programmer5.jpg" alt="AI and Machine Learning"
+                        class="gallery-image w-3/4 h-auto mx-auto rounded-lg cursor-pointer transition-transform duration-300 transform group-hover:scale-105"
+                        onclick="openModal(this)">
+                    <p class="text-center text-sm font-semibold mt-2">AI & Machine Learning - Implementing models to
+                        predict future trends.</p>
+                </div>
+            </div>
+        </div>
+
+        <aside class="bg-gray-200 p-4 rounded-md shadow-md">
+            <h2 class="text-xl font-semibold">Contact Information</h2>
+            <ul class="space-y-2">
+                <li><a href="https://www.linkedin.com/in/rico" target="_blank" class="text-blue-500">LinkedIn</a></li>
+                <li><a href="https://instagram.com/rico_cycles" target="_blank" class="text-blue-500">Instagram</a></li>
+                <li><a href="https://github.com/rico-onroad" target="_blank" class="text-blue-500">GitHub</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+        <p>&copy; 2024 Rico's Adventures. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+        <span class="absolute top-4 right-4 text-white text-3xl font-bold cursor-pointer"
+            onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="w-3/4 max-w-2xl rounded-lg shadow-lg" src="" alt="">
+        <div id="modalCaption" class="text-white text-center mt-4"></div>
+    </div>
+
+    <script>
+        function openModal(imgElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const caption = document.getElementById("modalCaption");
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            caption.textContent = imgElement.alt;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+
+</html>
